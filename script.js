@@ -1,36 +1,38 @@
-const temporizador = document.getElementById('temporizador').value;
+document.addEventListener('DOMContentLoaded', () => {
+    const temporizador = document.getElementById('temporizador');
+    const botao = document.getElementById('btn-comecar');
 
-temporizador.addEventListener('submit',() =>{
+    temporizador.addEventListener('submit', (event) => {
+        event.preventDefault();
 
-    const tempo = document.getElementById('tempo').value;
-    const numero = document.getElementById('numero').value;
-    
-    function diminuirTempo() {
-        timer = setInterval(() => {
-            console.log(tempo);
-            tempo--;
+        let tempo = Number(document.getElementById('tempo').value);
+        let timer;
 
-            if (tempo < 0) {
-                color = "green"
-                pararTempo();
-            }
-        }, 1000)
-    }
+        botao.disabled = true; // 🔒 trava o botão
 
-    function pararTempo() {
-        setTimeout(() =>{
-        clearInterval(timer)
-        color = "red"
-        console.log("Tempo acabou")
-        mostrarNumeor("Tempo acabou")
-    }, 0)
-    
-}
+        function diminuirTempo() {
+            timer = setInterval(() => {
+                if (tempo <= 0) {
+                    pararTempo();
+                } else {
+                    mostrarNumero(tempo, "green");
+                    tempo--;
+                }
+            }, 1000);
+        }
 
-    function mostrarNumeor(recebido,color){
-        document.getElementById('numero').textContent = recebido;
-        document.style.color = color === "red" ? "var(--error)" : "#10b981"
-    }
+        function pararTempo() {
+            clearInterval(timer);
+            mostrarNumero("Acabou o tempo", "red");
+            botao.disabled = false; // 🔓 libera o botão
+        }
 
-    diminuirTempo(numero)
-})
+        function mostrarNumero(valor, cor) {
+            const numero = document.getElementById("numero");
+            numero.textContent = valor;
+            numero.style.color = cor === "red" ? "red" : "#10b981";
+        }
+
+        diminuirTempo();
+    });
+});
