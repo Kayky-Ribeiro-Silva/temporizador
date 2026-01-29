@@ -3,21 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Temporizador</title>
+    <title>Temporizador ⏱️</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="titulo">
-        <p>Temporizador ⏲️</p>
-    </div>
+    <form class="temporizador" id="temporizador">
 
-    <form class="input">
-        <label for="number">Digie um tempo: </label>
-        <input type="number" id="tempo">
-        <button type="submit" id="btn-buttom">Começar a Contagem</button>
+        <header id="titulo">
+            <p>Temporizador ⏱️</p>
+        </header>
+
+        <label for="tempo">Digite um número:</label>
+        <input 
+            type="number" 
+            id="tempo" 
+            min="1"
+            required
+            placeholder="Ex: 10"
+        >
+
+        <button type="submit" id="btn-comecar">
+            Começar contagem
+        </button>
+
+        <div class="numero" id="numero"></div>
+
     </form>
-
-    <div id="numero"></div>
 
     <script src="script.js"></script>
 </body>
