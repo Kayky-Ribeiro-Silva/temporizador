@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let tempo = Number(document.getElementById('tempo').value);
         let timer;
 
-        botao.disabled = true; // 🔒 trava o botão
+        botao.disabled = true; 
 
         function diminuirTempo() {
             timer = setInterval(() => {
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         function pararTempo() {
             clearInterval(timer);
             mostrarNumero("Acabou o tempo", "red");
-            botao.disabled = false; // 🔓 libera o botão
+            botao.disabled = false; 
         }
 
         function mostrarNumero(valor, cor) {
